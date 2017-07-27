@@ -1,15 +1,21 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomePageComponent } from './home-page/home-page.component';
+import { RouterModule } from '@angular/router';
+
+import { HomePageComponent } from './home-page/home-page.component'
 
 @NgModule({
+  declarations:   [
+    HomePageComponent,
+  ],
   imports: [
+    // Import Official Shared Module
     CommonModule,
+    // Config Router
     RouterModule.forChild([
       { path: '', component: HomePageComponent, pathMatch: 'full' }
     ])
   ],
-  declarations: [HomePageComponent]
+  providers:[]
 })
 export class HomeModule { }
