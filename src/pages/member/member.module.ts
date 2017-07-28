@@ -5,16 +5,16 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 // Child Page Components
-import { StudentListComponent } from './student-list/student-list.component';
-import { StudentItemComponent } from './student-item/student-item.component';
-import { StudentEditComponent } from './student-edit/student-edit.component';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MemberItemComponent } from './member-item/member-item.component';
+import { MemberEditComponent } from './member-edit/member-edit.component';
 
 // Import Shared Module
 import { PipesModule } from '../../pipes/pipes.module'
 import { DirectivesModule } from '../../directives/directives.module'
 
 // Providers
-import { StudentService } from './student.service'
+import { MemberService } from './member.service'
 
 @NgModule({
   imports: [
@@ -26,15 +26,15 @@ import { StudentService } from './student.service'
     DirectivesModule,
     // Config Router
     RouterModule.forChild([
-      { path: '', component: StudentListComponent, pathMatch: 'full' },
-      { path: 'student/edit/:sid', component: StudentEditComponent, pathMatch: 'full' }
+      { path: '', component: MemberListComponent, pathMatch: 'full' },
+      { path: 'member/edit/:sid', component: MemberEditComponent, pathMatch: 'full' }
     ])
   ],
   declarations: [
-   StudentListComponent,
-   StudentItemComponent, 
-   StudentEditComponent
+   MemberListComponent,
+   MemberItemComponent, 
+   MemberEditComponent
    ],
-   providers:[StudentService]
+   providers:[MemberService]
 })
-export class StudentModule { }
+export class MemberModule { }

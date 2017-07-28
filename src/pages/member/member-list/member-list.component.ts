@@ -7,13 +7,13 @@ import {
   Title
 } from '@angular/platform-browser';
 
-import {StudentService} from "../student.service";
+import {MemberService} from "../member.service";
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.scss']
+  selector: 'app-member-list',
+  templateUrl: './member-list.component.html',
+  styleUrls: ['./member-list.component.scss']
 })
-export class StudentListComponent implements OnInit {
+export class MemberListComponent implements OnInit {
   searchText: string = "default";
   selectUser:any={
     name:"未选择"
@@ -74,7 +74,7 @@ export class StudentListComponent implements OnInit {
      [this.users[index - 1], this.users[j]] = [this.users[j], this.users[index - 1]];
   })
   }
-  constructor(meta: Meta, title: Title, private userServ:StudentService) {
+  constructor(meta: Meta, title: Title, private userServ:MemberService) {
     this.users = this.userServ.getUsers()
  
     // Set SEO

@@ -28,8 +28,8 @@
       true,
       140
     ],
-    "student-access": false,
-    "student-ordering": [
+    "member-access": false,
+    "member-ordering": [
       true,
       {
         "order": [
@@ -135,7 +135,7 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "no-access-missing-student": true,
+    "no-access-missing-member": true,
     "templates-use-public": true,
     "invoke-injectable": true
   }

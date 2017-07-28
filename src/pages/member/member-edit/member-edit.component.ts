@@ -1,16 +1,16 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-import { StudentService } from '../student.service'
+import { MemberService } from '../member.service'
 
 @Component({
-  selector: 'app-student-edit',
-  templateUrl: './student-edit.component.html',
-  styleUrls: ['./student-edit.component.scss']
+  selector: 'app-member-edit',
+  templateUrl: './member-edit.component.html',
+  styleUrls: ['./member-edit.component.scss']
 })
-export class StudentEditComponent implements OnInit,OnDestroy {
-  studentId:string="";
-  student:any={
+export class MemberEditComponent implements OnInit,OnDestroy {
+  memberId:string="";
+  member:any={
     name:""
   };
   isNew:boolean = false;
@@ -19,22 +19,22 @@ export class StudentEditComponent implements OnInit,OnDestroy {
   getUserSubscribe:any;
   
   constructor(private route: ActivatedRoute,
-  private studentServ:StudentService,
+  private memberServ:MemberService,
   private location: Location) {
   }
   back(){
     this.location.back();
   }
   save(){
-    this.studentServ.users.push(this.student)
+    this.memberServ.users.push(this.member)
     this.location.back();
   }
   ngOnInit() {
     this.getUserSubscribe = this.route.params.subscribe(params=>{
-      this.getStudent(params['sid']).then(student=>{
-      console.log(student)
-      this.studentId = student.index;
-      this.student = student
+      this.getMember(params['sid']).then(member=>{
+      console.log(member)
+      this.memberId = member.index;
+      this.member = member
     }).catch(err=>{
       console.log(err)
     })
@@ -44,19 +44,19 @@ export class StudentEditComponent implements OnInit,OnDestroy {
     this.getUserSubscribe.unsubscribe();
   }
 
-  getStudent(id: any): Promise<any> {
+  getMember(id: any): Promise<any> {
     
     let p = new Promise((resolve,reject)=>{
       if(id=="new"){
-        let student = {name:""}
+        let member = {name:""}
         this.isNew = true;
-        resolve(student)
+        resolve(member)
       }
-      let student = this.studentServ.users.find(item=>item.index == id)
-      if(student){
-        resolve(student)
+      let member = this.memberServ.users.find(item=>item.index == id)
+      if(member){
+        resolve(member)
       }else{
-        reject("student not found")
+        reject("member not found")
       }
     })
     return p

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class StudentService{
+export class MemberService{
     isLogined:boolean = false;
     users: Array < any > = [
       {"index":1,

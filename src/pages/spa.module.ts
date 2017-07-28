@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { AboutModule } from './about/about.module';
-import { StudentModule } from './student/student.module';
+import { MemberModule } from './member/member.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { StudentModule } from './student/student.module';
     HomeModule,
     UserModule,
     AboutModule,
-    StudentModule
+    MemberModule
   ],
 })
 export class SPAModule { }
