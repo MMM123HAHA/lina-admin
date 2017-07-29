@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SexNamePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    if(value =="M"){
+    if(value =="1"){
       return "男"
     }else{
       return "女"

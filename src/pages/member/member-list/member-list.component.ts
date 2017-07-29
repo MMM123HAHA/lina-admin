@@ -8,6 +8,9 @@ import {
 } from '@angular/platform-browser';
 
 import {MemberService} from "../member.service";
+import { Http } from '@angular/http'
+import {Parse} from "../../../cloud/parse"
+
 @Component({
   selector: 'app-member-list',
   templateUrl: './member-list.component.html',
@@ -73,12 +76,18 @@ export class MemberListComponent implements OnInit {
     let j = Math.floor(Math.random() * index);
      [this.users[index - 1], this.users[j]] = [this.users[j], this.users[index - 1]];
   })
-  }
-  constructor(meta: Meta, title: Title, private userServ:MemberService) {
-    this.users = this.userServ.getUsers()
- 
-    // Set SEO
-    title.setTitle('My Home Page');
+}
+
+  constructor(meta: Meta, title: Title,private http:Http, private userServ:MemberService) {
+
+    let query = new Parse.Query("member",http)
+    query.find().subscribe(data=>{
+      console.log(data)
+      this.users = data
+    })
+
+  //   // Set SEO
+  //   title.setTitle('My Home Page');
 
     meta.addTags([{
         name: 'author',

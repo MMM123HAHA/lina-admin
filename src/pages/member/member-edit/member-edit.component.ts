@@ -25,23 +25,48 @@ export class MemberEditComponent implements OnInit,OnDestroy {
   back(){
     this.location.back();
   }
+
   save(){
-    this.memberServ.users.push(this.member)
-    this.location.back();
+    this.member.name = this.member.name
+    this.member.sex = Number(this.member.sex)
+    this.member.age = this.member.age
+    this.member.skill = this.member.skill
+    this.member.expect = this.member.expect
+    this.member.homepage = this.member.homepage
+    this.memberServ.saveMember(this.member).subscribe(data=>{
+      console.log(data)
+      this.location.back();
+    })
+    this.memberServ.saveMember(this.member).subscribe(data=>{
+      console.log(data)
+      this.location.back();        
+    })
   }
+
   ngOnInit() {
-    this.getUserSubscribe = this.route.params.subscribe(params=>{
-      this.getMember(params['sid']).then(member=>{
-      console.log(member)
-      this.memberId = member.index;
-      this.member = member
-    }).catch(err=>{
-      console.log(err)
-    })
+        this.route.params.subscribe(params=>{
+          console.log(params)
+          let id = params['sid']
+          if(id=="new"){
+            let member = {name:""}
+            this.isNew = true;
+            this.member = member
+          }else{
+            this.memberServ.getMemberById(id).subscribe(member=>{
+            console.log(member)
+            // this.studentId = student.objectId;
+            this.member = member
+        })
+      }
+
     })
   }
+//
+
+
+
   ngOnDestroy(){
-    this.getUserSubscribe.unsubscribe();
+    // this.getUserSubscribe.unsubscribe();
   }
 
   getMember(id: any): Promise<any> {
